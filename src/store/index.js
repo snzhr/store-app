@@ -28,6 +28,15 @@ export default createStore({
     REMOVE_ITEM(state, item){
       state.cart.splice(state.cart.indexOf(item), 1)
     },
+
+
+    INCREMENT_QUANTITY(state, payload){
+        payload.qt++
+    },
+    DECREMENT_QUANTITY(state, payload){
+      payload.qt--
+  }
+
   },
   actions: {
     addToCart(context, payload){
@@ -35,6 +44,12 @@ export default createStore({
     },
     removeItem({commit}, payload){
       commit("REMOVE_ITEM", payload)
+    },
+    incrementQt({commit}, payload){
+      commit("INCREMENT_QUANTITY", payload)
+    },
+    decrementQt({commit}, payload){
+      commit("DECREMENT_QUANTITY", payload)
     }
   },
   getters:{
