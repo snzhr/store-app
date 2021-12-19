@@ -20,11 +20,16 @@
       </div>
     </div>
   </div>
+  <CartpageTotal />
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
+import CartpageTotal from "@/components/CartpageTotal.vue";
 export default {
+  components: {
+    CartpageTotal,
+  },
   computed: {
     ...mapState(["cart"]),
   },

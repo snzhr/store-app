@@ -34,7 +34,9 @@ export default createStore({
         payload.qt++
     },
     DECREMENT_QUANTITY(state, payload){
-      payload.qt--
+      if (payload.qt > 1) {
+        payload.qt--
+      }
   }
 
   },
