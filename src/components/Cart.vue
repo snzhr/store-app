@@ -16,7 +16,9 @@
     <div v-if="cart.length !== 0" class="cart-total">
       <p>Total: {{ getCartTotal }}</p>
     </div>
-    <button @click="$router.push('/cart')">Go to cart</button>
+    <button @click="$router.push('/cart'), $emit('hideCart')">
+      Go to cart
+    </button>
   </div>
 </template>
 

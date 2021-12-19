@@ -1,5 +1,9 @@
 <template>
-  <div class="cart-block">
+  <div v-if="cart.length === 0" class="empty__cartpage">
+    <h1>Your cart is empty</h1>
+    <h3 @click="$router.push('/')">Go to homepage</h3>
+  </div>
+  <div v-else class="cart-block">
     <div class="items__in__cart">
       <div class="item__block" v-for="item in cart" :key="item.id">
         <div class="item__in__cart">
@@ -31,7 +35,13 @@ export default {
 </script>
 
 <style scoped>
-.items__in__cart {
+.empty__cartpage {
+  margin: 10% 0;
+  text-align: center;
+}
+.empty__cartpage h3 {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .item__block {
   border: 2px solid darkslategrey;

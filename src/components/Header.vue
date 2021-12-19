@@ -7,7 +7,7 @@
     <div class="cart" @click="isShown = !isShown">
       Cart ({{ cart.length }} items)
     </div>
-    <Cart v-if="isShown" />
+    <Cart v-if="isShown" @hideCart="isShown = false" />
   </div>
 </template>
 
