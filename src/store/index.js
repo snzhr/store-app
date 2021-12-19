@@ -10,26 +10,24 @@ export default createStore({
       { id: 5, title: "Adidas boots", price: 4135, qt: 1 },
       { id: 6, title: "Nike trousers", price: 1500, qt: 1 },
     ],
-    cart: []
+    cart: [],
+    cartTotal: 0
   },
   mutations: {
     ADD_TO_CART(state, payload){
       const cartItem = Object.assign({},  payload)
-    
       let productInCart = state.cart.find(item => {
         return item.id === cartItem.id
       })
-      
       if (!productInCart) {
         state.cart.push(cartItem)        
       } else {
-        // console.log('Added');
         productInCart.qt++
       }
     },
     REMOVE_ITEM(state, item){
       state.cart.splice(state.cart.indexOf(item), 1)
-    }
+    },
   },
   actions: {
     addToCart(context, payload){
@@ -37,6 +35,13 @@ export default createStore({
     },
     removeItem({commit}, payload){
       commit("REMOVE_ITEM", payload)
+    }
+  },
+  getters:{
+    getCartTotal(state){
+      return state.cart.reduce((acc,item)=>{
+        return acc+=item.price*item.qt
+      },0)
     }
   },
   modules: {

@@ -12,14 +12,19 @@
     <div v-else class="empty-cart">
       <h3>Your cart is empty</h3>
     </div>
+    <!-- Cart total -->
+    <div v-if="cart.length !== 0" class="cart-total">
+      <p>Total: {{ getCartTotal }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapState(["cart"]),
+    ...mapState(["cart", "cartTotal"]),
+    ...mapGetters(["getCartTotal"]),
   },
   methods: {
     ...mapActions(["removeItem"]),
@@ -31,11 +36,12 @@ export default {
 .cart-items {
   position: absolute;
   border: 1px solid cadetblue;
-  background-color: white;
+  background-color: darkslategrey;
   right: 0;
   top: 3.1em;
   width: 20em;
   padding: 0.5em;
+  text-align: center;
 }
 .cart-item {
   background-color: cadetblue;
@@ -45,9 +51,5 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   padding: 0.4em;
-}
-.empty-cart {
-  text-align: center;
-  color: black;
 }
 </style>

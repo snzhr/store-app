@@ -33,7 +33,7 @@ export default {
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: lightslategrey;
+  background-color: darkslategrey;
   padding: 1em 2em;
   color: white;
 }
