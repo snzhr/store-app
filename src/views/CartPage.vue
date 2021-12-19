@@ -3,7 +3,7 @@
     <h1>Your cart is empty</h1>
     <h3 @click="$router.push('/')">Go to homepage</h3>
   </div>
-  <div v-else class="cart-block">
+  <div v-else class="cart__block">
     <div class="items__in__cart">
       <div class="item__block" v-for="item in cart" :key="item.id">
         <div class="item__in__cart">
@@ -11,7 +11,8 @@
           <p>{{ item.price }}</p>
           <p>
             <button class="cart__btns" @click="decrementQt(item)">-</button>
-            {{ item.qt }}
+            <!-- <input type="number" v-model="item.qt" /> -->
+            <span class="item__qt">{{ item.qt }}</span>
             <button class="cart__btns" @click="incrementQt(item)">+</button>
           </p>
         </div>
@@ -19,8 +20,8 @@
         <div><button @click="removeItem(item)">Delete item</button></div>
       </div>
     </div>
+    <CartpageTotal />
   </div>
-  <CartpageTotal />
 </template>
 
 <script>
@@ -65,5 +66,8 @@ export default {
 .cart__btns {
   padding: 0.2em 0.4em;
   cursor: pointer;
+}
+.item__qt {
+  margin: 0 1em;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="cartpage__total">
-    <h1>Total: {{ $store.getters.getCartTotal }}</h1>
-    <button>Go to checkout</button>
+    <h1>Total: {{ $store.getters.getCartTotal }} som</h1>
+    <button @click="$router.push('/checkout')">Go to checkout</button>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {};
   position: fixed;
   width: 100%;
   bottom: 0;
-  padding: 2em;
+  padding: 0.5em;
   text-align: right;
 }
 </style>
